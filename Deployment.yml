@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: dontnet-dec7-msn
-        image: adityaregistry.azurecr.io/dotnet-dec7_msn:#{Build.BuildId}#
+        image: adityaregistry.azurecr.io/shaheen256/dotnet-dec7_msn:#{Build.BuildId}#
         ports:
         - name: sg-port
           containerPort: 5000
