@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: dontnet-dec7-msn
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: dontnet-dec7-msn
+    spec:
+      containers:
+      - name: dontnet-dec7-msn
+        image: adityaregistry.azurecr.io/dotnet-dec7_msn:#{Build.BuildId}#
+        ports:
+        - name: sg-port
+          containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dontnet-dec7-spa
+spec:
+  ports:
+  - port: 8888
+    nodePort: 31115
+    targetPort: sg-port
+    protocol: TCP
+  selector:
+    app: dontnet-dec7-msn
+  type: LoadBalancer
