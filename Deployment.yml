@@ -14,7 +14,7 @@ spec:
         image: adityaregistry.azurecr.io/shaheen256/dotnet-dec7_msn:#{Build.BuildId}#
         ports:
         - name: sg-port
-          containerPort: 5000
+          containerPort: 80
 ---
 apiVersion: v1
 kind: Service
